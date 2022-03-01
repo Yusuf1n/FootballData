@@ -1,0 +1,5 @@
+.* 
+!.gitignore 
+*.log 
+… 
+PremierLeagueData/Constants
