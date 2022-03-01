@@ -1,10 +1,3 @@
-C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\PremierLeagueData.exe
-C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\PremierLeagueData.deps.json
-C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\PremierLeagueData.runtimeconfig.json
-C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\PremierLeagueData.runtimeconfig.dev.json
-C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\PremierLeagueData.dll
-C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\ref\PremierLeagueData.dll
-C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\PremierLeagueData.pdb
 C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\RestSharp.dll
 C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\obj\Debug\net5.0\PremierLeagueData.csproj.AssemblyReference.cache
 C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\obj\Debug\net5.0\PremierLeagueData.GeneratedMSBuildEditorConfig.editorconfig
@@ -12,9 +5,16 @@ C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueDat
 C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\obj\Debug\net5.0\PremierLeagueData.AssemblyInfo.cs
 C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\obj\Debug\net5.0\PremierLeagueData.csproj.CoreCompileInputs.cache
 C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\obj\Debug\net5.0\PremierLeagueData.csproj.CopyComplete
-C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\obj\Debug\net5.0\PremierLeagueData.dll
-C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\obj\Debug\net5.0\ref\PremierLeagueData.dll
-C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\obj\Debug\net5.0\PremierLeagueData.pdb
 C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\obj\Debug\net5.0\PremierLeagueData.genruntimeconfig.cache
 C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\ConsoleTables.dll
+C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\assembly name PremierLeagueData.exe
+C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\assembly name PremierLeagueData.deps.json
+C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\assembly name PremierLeagueData.runtimeconfig.json
+C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\assembly name PremierLeagueData.runtimeconfig.dev.json
+C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\assembly name PremierLeagueData.dll
+C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\ref\assembly name PremierLeagueData.dll
+C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\bin\Debug\net5.0\assembly name PremierLeagueData.pdb
+C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\obj\Debug\net5.0\assembly name PremierLeagueData.dll
+C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\obj\Debug\net5.0\ref\assembly name PremierLeagueData.dll
+C:\Users\yusuf.naheem\Documents\Visual Studio 2022\Console Apps\PremierLeagueData\PremierLeagueData\obj\Debug\net5.0\assembly name PremierLeagueData.pdb
