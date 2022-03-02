@@ -20,7 +20,8 @@ namespace PremierLeagueData
             //Console.WriteLine();
             //await APIRequests.LeagueStandings(league_);
             //await APIRequests.TopScorers();
-            await APIRequests.TopAssistorss();
+            //await APIRequests.TopAssistors();
+            await APIRequests.Fixtures();
             Console.ReadLine();
         }
     }

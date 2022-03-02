@@ -128,7 +128,7 @@ namespace PremierLeagueData
             return response;
         }
 
-        public static async Task<RestResponse> TopAssistorss()
+        public static async Task<RestResponse> TopAssistors()
         {
             var client = new RestClient(Constants.baseURL);
 
@@ -161,7 +161,7 @@ namespace PremierLeagueData
 
             string league = (string)obj["response"][0]["statistics"][0]["league"]["name"];
             string season = (string)obj["parameters"]["season"];
-            Console.WriteLine($"{league} {season} Top Scorers");
+            Console.WriteLine($"{league} {season} Top Assistors");
             Console.WriteLine();
 
             var table = new ConsoleTable("Rank", "Player", "Goals", "Appearences", "Team", "Nationality");
@@ -181,6 +181,66 @@ namespace PremierLeagueData
             }
 
             table.Write();
+            return response;
+        }
+
+        public static async Task<RestResponse> Fixtures()
+        {
+            var client = new RestClient(Constants.baseURL);
+
+            var request = new RestRequest("fixtures", Method.Get)
+                .AddHeader(Constants.apiKey, Constants.apiValue)
+                .AddParameter("league", 39) // Premier League
+                .AddParameter("season", 2021) // 21/22 Season
+                .AddParameter("round", "Regular Season - 26"); // GW 27
+
+            //switch (league_)
+            //{
+            //    case 1:
+            //        request.AddParameter("league", 39); // Premier League
+            //        break;
+            //    case 2:
+            //        request.AddParameter("league", 140); // La Liga
+            //        break;
+            //    case 3:
+            //        request.AddParameter("league", 135); // Serie A
+            //        break;
+            //    case 4:
+            //        request.AddParameter("league", 78); // Bundesliga
+            //        break;
+            //    case 5:
+            //        request.AddParameter("league", 61); // Ligue 1
+            //        break;
+            //}
+
+            RestResponse response = await client.GetAsync(request);
+            JObject obj = JObject.Parse(response.Content);
+
+            string league = (string)obj["response"][0]["league"]["name"];
+            string season = (string)obj["response"][0]["league"]["season"];
+            Console.WriteLine($"{league} {season} Gameweek 27 Fixtures & Results");
+            Console.WriteLine();
+
+            var table = new ConsoleTable("Home Team", "Score", "Away Team");
+
+            for (int i = 0; i < 10; i++)
+            {
+                string homeTeam = (string)obj["response"][i]["teams"]["home"]["name"];
+                string awayTeam = (string)obj["response"][i]["teams"]["away"]["name"];
+                string homeGoals = (string)obj["response"][i]["goals"]["home"];
+                string awayGoals = (string)obj["response"][i]["goals"]["away"];
+                string score = $"{homeGoals} - {awayGoals}";
+                string status = (string)obj["response"][i]["fixture"]["status"]["long"];
+                if (status == "Not Started" || status == "Match Postponed")
+                    score = " N/A";
+
+                table.AddRow(homeTeam, score, awayTeam);
+                //Console.WriteLine(response.Content);
+            }
+
+            table.Write();
+            Console.WriteLine();
+            Console.WriteLine("N/A = Match Postponed");
             return response;
         }
     }
