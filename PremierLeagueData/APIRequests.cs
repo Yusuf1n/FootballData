@@ -69,36 +69,109 @@ namespace PremierLeagueData
             }
 
             table.Write();
+            //return response;
+
+            Console.WriteLine("Would you like to go back to the Main Menu?");
+            string userInput = Console.ReadLine();
+            if (userInput == "Yes" || userInput == "yes")
+            {
+                Program.Main(null);
+            }
+            else
+            {
+                Environment.Exit(0);
+            }
+
             return response;
         }
 
-        public static async Task<RestResponse> TopScorers()
+
+        public static async Task<RestResponse> FixtureResults(int league_, int gameweek)
+        {
+            var client = new RestClient(Constants.baseURL);
+
+            var request = new RestRequest("fixtures", Method.Get)
+                .AddHeader(Constants.apiKey, Constants.apiValue)
+                .AddParameter("season", 2021) // 21/22 Season
+                .AddParameter("round", $"Regular Season - {gameweek}"); // GW 27
+
+            switch (league_)
+            {
+                case 1:
+                    request.AddParameter("league", 39); // Premier League
+                    break;
+                case 2:
+                    request.AddParameter("league", 140); // La Liga
+                    break;
+                case 3:
+                    request.AddParameter("league", 135); // Serie A
+                    break;
+                case 4:
+                    request.AddParameter("league", 78); // Bundesliga
+                    break;
+                case 5:
+                    request.AddParameter("league", 61); // Ligue 1
+                    break;
+            }
+
+            RestResponse response = await client.GetAsync(request);
+            JObject obj = JObject.Parse(response.Content);
+
+            string league = (string)obj["response"][0]["league"]["name"];
+            string season = (string)obj["response"][0]["league"]["season"];
+            Console.WriteLine($"{league} {season} Gameweek {gameweek} Fixture Results");
+            Console.WriteLine();
+
+            var table = new ConsoleTable("Home Team", "Score", "Away Team");
+
+            for (int i = 0; i < 10; i++)
+            {
+                string homeTeam = (string)obj["response"][i]["teams"]["home"]["name"];
+                string awayTeam = (string)obj["response"][i]["teams"]["away"]["name"];
+                string homeGoals = (string)obj["response"][i]["goals"]["home"];
+                string awayGoals = (string)obj["response"][i]["goals"]["away"];
+                string score = $"{homeGoals} - {awayGoals}";
+                string status = (string)obj["response"][i]["fixture"]["status"]["long"];
+                if (status == "Not Started" || status == "Match Postponed")
+                    score = " N/A";
+
+                table.AddRow(homeTeam, score, awayTeam);
+                //Console.WriteLine(response.Content);
+            }
+
+            table.Write();
+            Console.WriteLine();
+            Console.WriteLine("N/A = Match Postponed");
+            return response;
+        }
+
+
+        public static async Task<RestResponse> TopScorers(int league_)
         {
             var client = new RestClient(Constants.baseURL);
 
             var request = new RestRequest("players/topscorers", Method.Get)
                 .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("league", 39) // Premier League
                 .AddParameter("season", 2021); // 21/22 Season
 
-            //switch (league_)
-            //{
-            //    case 1:
-            //        request.AddParameter("league", 39); // Premier League
-            //        break;
-            //    case 2:
-            //        request.AddParameter("league", 140); // La Liga
-            //        break;
-            //    case 3:
-            //        request.AddParameter("league", 135); // Serie A
-            //        break;
-            //    case 4:
-            //        request.AddParameter("league", 78); // Bundesliga
-            //        break;
-            //    case 5:
-            //        request.AddParameter("league", 61); // Ligue 1
-            //        break;
-            //}
+            switch (league_)
+            {
+                case 1:
+                    request.AddParameter("league", 39); // Premier League
+                    break;
+                case 2:
+                    request.AddParameter("league", 140); // La Liga
+                    break;
+                case 3:
+                    request.AddParameter("league", 135); // Serie A
+                    break;
+                case 4:
+                    request.AddParameter("league", 78); // Bundesliga
+                    break;
+                case 5:
+                    request.AddParameter("league", 61); // Ligue 1
+                    break;
+            }
 
             RestResponse response = await client.GetAsync(request);
             JObject obj = JObject.Parse(response.Content);
@@ -128,33 +201,33 @@ namespace PremierLeagueData
             return response;
         }
 
-        public static async Task<RestResponse> TopAssistors()
+
+        public static async Task<RestResponse> TopAssistors(int league_)
         {
             var client = new RestClient(Constants.baseURL);
 
             var request = new RestRequest("players/topassists", Method.Get)
                 .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("league", 39) // Premier League
                 .AddParameter("season", 2021); // 21/22 Season
 
-            //switch (league_)
-            //{
-            //    case 1:
-            //        request.AddParameter("league", 39); // Premier League
-            //        break;
-            //    case 2:
-            //        request.AddParameter("league", 140); // La Liga
-            //        break;
-            //    case 3:
-            //        request.AddParameter("league", 135); // Serie A
-            //        break;
-            //    case 4:
-            //        request.AddParameter("league", 78); // Bundesliga
-            //        break;
-            //    case 5:
-            //        request.AddParameter("league", 61); // Ligue 1
-            //        break;
-            //}
+            switch (league_)
+            {
+                case 1:
+                    request.AddParameter("league", 39); // Premier League
+                    break;
+                case 2:
+                    request.AddParameter("league", 140); // La Liga
+                    break;
+                case 3:
+                    request.AddParameter("league", 135); // Serie A
+                    break;
+                case 4:
+                    request.AddParameter("league", 78); // Bundesliga
+                    break;
+                case 5:
+                    request.AddParameter("league", 61); // Ligue 1
+                    break;
+            }
 
             RestResponse response = await client.GetAsync(request);
             JObject obj = JObject.Parse(response.Content);
@@ -164,83 +237,23 @@ namespace PremierLeagueData
             Console.WriteLine($"{league} {season} Top Assistors");
             Console.WriteLine();
 
-            var table = new ConsoleTable("Rank", "Player", "Goals", "Appearences", "Team", "Nationality");
+            var table = new ConsoleTable("Rank", "Player", "Assists", "Appearences", "Team", "Nationality");
             int rank = 0;
 
             for (int i = 0; i < 10; i++)
             {
                 rank++;
                 string player = (string)obj["response"][i]["player"]["name"];
-                string goals = (string)obj["response"][i]["statistics"][0]["goals"]["assists"];
+                string assists = (string)obj["response"][i]["statistics"][0]["goals"]["assists"];
                 string appearences = (string)obj["response"][i]["statistics"][0]["games"]["appearences"];
                 string team = (string)obj["response"][i]["statistics"][0]["team"]["name"];
                 string nationality = (string)obj["response"][i]["player"]["nationality"];
 
-                table.AddRow(rank, player, goals, appearences, team, nationality);
+                table.AddRow(rank, player, assists, appearences, team, nationality);
                 //Console.WriteLine(response.Content);
             }
 
             table.Write();
-            return response;
-        }
-
-        public static async Task<RestResponse> Fixtures()
-        {
-            var client = new RestClient(Constants.baseURL);
-
-            var request = new RestRequest("fixtures", Method.Get)
-                .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("league", 39) // Premier League
-                .AddParameter("season", 2021) // 21/22 Season
-                .AddParameter("round", "Regular Season - 26"); // GW 27
-
-            //switch (league_)
-            //{
-            //    case 1:
-            //        request.AddParameter("league", 39); // Premier League
-            //        break;
-            //    case 2:
-            //        request.AddParameter("league", 140); // La Liga
-            //        break;
-            //    case 3:
-            //        request.AddParameter("league", 135); // Serie A
-            //        break;
-            //    case 4:
-            //        request.AddParameter("league", 78); // Bundesliga
-            //        break;
-            //    case 5:
-            //        request.AddParameter("league", 61); // Ligue 1
-            //        break;
-            //}
-
-            RestResponse response = await client.GetAsync(request);
-            JObject obj = JObject.Parse(response.Content);
-
-            string league = (string)obj["response"][0]["league"]["name"];
-            string season = (string)obj["response"][0]["league"]["season"];
-            Console.WriteLine($"{league} {season} Gameweek 27 Fixtures & Results");
-            Console.WriteLine();
-
-            var table = new ConsoleTable("Home Team", "Score", "Away Team");
-
-            for (int i = 0; i < 10; i++)
-            {
-                string homeTeam = (string)obj["response"][i]["teams"]["home"]["name"];
-                string awayTeam = (string)obj["response"][i]["teams"]["away"]["name"];
-                string homeGoals = (string)obj["response"][i]["goals"]["home"];
-                string awayGoals = (string)obj["response"][i]["goals"]["away"];
-                string score = $"{homeGoals} - {awayGoals}";
-                string status = (string)obj["response"][i]["fixture"]["status"]["long"];
-                if (status == "Not Started" || status == "Match Postponed")
-                    score = " N/A";
-
-                table.AddRow(homeTeam, score, awayTeam);
-                //Console.WriteLine(response.Content);
-            }
-
-            table.Write();
-            Console.WriteLine();
-            Console.WriteLine("N/A = Match Postponed");
             return response;
         }
     }
