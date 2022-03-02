@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PremierLeagueData
 {
-    internal static class Constants
+    class Constants
     {
         public static string baseURL = "https://v3.football.api-sports.io/";
         public static string apiKey = "x-apisports-key";

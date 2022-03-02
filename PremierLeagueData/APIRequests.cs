@@ -127,5 +127,61 @@ namespace PremierLeagueData
             table.Write();
             return response;
         }
+
+        public static async Task<RestResponse> TopAssistorss()
+        {
+            var client = new RestClient(Constants.baseURL);
+
+            var request = new RestRequest("players/topassists", Method.Get)
+                .AddHeader(Constants.apiKey, Constants.apiValue)
+                .AddParameter("league", 39) // Premier League
+                .AddParameter("season", 2021); // 21/22 Season
+
+            //switch (league_)
+            //{
+            //    case 1:
+            //        request.AddParameter("league", 39); // Premier League
+            //        break;
+            //    case 2:
+            //        request.AddParameter("league", 140); // La Liga
+            //        break;
+            //    case 3:
+            //        request.AddParameter("league", 135); // Serie A
+            //        break;
+            //    case 4:
+            //        request.AddParameter("league", 78); // Bundesliga
+            //        break;
+            //    case 5:
+            //        request.AddParameter("league", 61); // Ligue 1
+            //        break;
+            //}
+
+            RestResponse response = await client.GetAsync(request);
+            JObject obj = JObject.Parse(response.Content);
+
+            string league = (string)obj["response"][0]["statistics"][0]["league"]["name"];
+            string season = (string)obj["parameters"]["season"];
+            Console.WriteLine($"{league} {season} Top Scorers");
+            Console.WriteLine();
+
+            var table = new ConsoleTable("Rank", "Player", "Goals", "Appearences", "Team", "Nationality");
+            int rank = 0;
+
+            for (int i = 0; i < 10; i++)
+            {
+                rank++;
+                string player = (string)obj["response"][i]["player"]["name"];
+                string goals = (string)obj["response"][i]["statistics"][0]["goals"]["assists"];
+                string appearences = (string)obj["response"][i]["statistics"][0]["games"]["appearences"];
+                string team = (string)obj["response"][i]["statistics"][0]["team"]["name"];
+                string nationality = (string)obj["response"][i]["player"]["nationality"];
+
+                table.AddRow(rank, player, goals, appearences, team, nationality);
+                //Console.WriteLine(response.Content);
+            }
+
+            table.Write();
+            return response;
+        }
     }
 }

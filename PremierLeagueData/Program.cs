@@ -19,7 +19,8 @@ namespace PremierLeagueData
             //int league_ = Convert.ToInt32(Console.ReadLine());
             //Console.WriteLine();
             //await APIRequests.LeagueStandings(league_);
-            await APIRequests.TopScorers();
+            //await APIRequests.TopScorers();
+            await APIRequests.TopAssistorss();
             Console.ReadLine();
         }
     }
