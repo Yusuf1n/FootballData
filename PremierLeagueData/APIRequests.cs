@@ -93,19 +93,6 @@ namespace PremierLeagueData
 
             table.Write();
             return response;
-
-            //Console.WriteLine("Would you like to go back to the Main Menu?");
-            //string userInput = Console.ReadLine();
-            //if (userInput == "Yes" || userInput == "yes")
-            //{
-            //    Program.Main(null);
-            //}
-            //else
-            //{
-            //    Environment.Exit(0);
-            //}
-
-            //return response;
         }
 
 
