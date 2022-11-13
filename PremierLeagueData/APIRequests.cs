@@ -18,7 +18,7 @@ namespace PremierLeagueData
 
             var request = new RestRequest("standings", Method.Get)
                 .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("season", 2021); // 21/22 Season
+                .AddParameter("season", DateTime.Now.Year); // Current Season
 
             switch (league_)
             {
@@ -102,7 +102,7 @@ namespace PremierLeagueData
 
             var request = new RestRequest("fixtures", Method.Get)
                 .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("season", 2021) // 21/22 Season
+                .AddParameter("season", DateTime.Now.Year) // Current Season
                 .AddParameter("round", $"Regular Season - {gameweek}"); // GW 27
 
             switch (league_)
@@ -162,7 +162,7 @@ namespace PremierLeagueData
 
             var request = new RestRequest("players/topscorers", Method.Get)
                 .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("season", 2021); // 21/22 Season
+                .AddParameter("season", DateTime.Now.Year); // Current Season
 
             switch (league_)
             {
@@ -218,7 +218,7 @@ namespace PremierLeagueData
 
             var request = new RestRequest("players/topassists", Method.Get)
                 .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("season", 2021); // 21/22 Season
+                .AddParameter("season", DateTime.Now.Year); // Current Season
 
             switch (league_)
             {
