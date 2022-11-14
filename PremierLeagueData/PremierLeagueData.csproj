@@ -11,6 +11,7 @@
     <PackageReference Include="ConsoleTables" Version="2.4.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="RestSharp" Version="107.3.0" />
+    <PackageReference Include="Spectre.Console" Version="0.45.0" />
   </ItemGroup>
 
 </Project>
