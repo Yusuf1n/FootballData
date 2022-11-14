@@ -1,5 +1,5 @@
 # FootballData
-.NET5 C# Console App - API Football REST API
+.NET6 C# Console App - API Football REST API
 
 Documentation - https://www.api-football.com/documentation-v3
 
