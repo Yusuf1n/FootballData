@@ -1,36 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yusuf.naheem\\Documents\\Visual Studio 2022\\Console Apps\\PremierLeagueData\\PremierLeagueData\\PremierLeagueData.csproj": {}
+    "C:\\Users\\Yusuf.Naheem\\OneDrive - Verco\\Documents\\Visual Studio 2022\\FootballData\\PremierLeagueData\\PremierLeagueData.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yusuf.naheem\\Documents\\Visual Studio 2022\\Console Apps\\PremierLeagueData\\PremierLeagueData\\PremierLeagueData.csproj": {
+    "C:\\Users\\Yusuf.Naheem\\OneDrive - Verco\\Documents\\Visual Studio 2022\\FootballData\\PremierLeagueData\\PremierLeagueData.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yusuf.naheem\\Documents\\Visual Studio 2022\\Console Apps\\PremierLeagueData\\PremierLeagueData\\PremierLeagueData.csproj",
+        "projectUniqueName": "C:\\Users\\Yusuf.Naheem\\OneDrive - Verco\\Documents\\Visual Studio 2022\\FootballData\\PremierLeagueData\\PremierLeagueData.csproj",
         "projectName": "assembly name PremierLeagueData",
-        "projectPath": "C:\\Users\\yusuf.naheem\\Documents\\Visual Studio 2022\\Console Apps\\PremierLeagueData\\PremierLeagueData\\PremierLeagueData.csproj",
-        "packagesPath": "C:\\Users\\yusuf.naheem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yusuf.naheem\\Documents\\Visual Studio 2022\\Console Apps\\PremierLeagueData\\PremierLeagueData\\obj\\",
+        "projectPath": "C:\\Users\\Yusuf.Naheem\\OneDrive - Verco\\Documents\\Visual Studio 2022\\FootballData\\PremierLeagueData\\PremierLeagueData.csproj",
+        "packagesPath": "C:\\Users\\Yusuf.Naheem\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Yusuf.Naheem\\OneDrive - Verco\\Documents\\Visual Studio 2022\\FootballData\\PremierLeagueData\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\yusuf.naheem\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Yusuf.Naheem\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -41,8 +37,8 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "ConsoleTables": {
               "target": "Package",
@@ -54,7 +50,11 @@
             },
             "RestSharp": {
               "target": "Package",
-              "version": "[107.3.0, )"
+              "version": "[108.0.2, )"
+            },
+            "Spectre.Console": {
+              "target": "Package",
+              "version": "[0.45.0, )"
             }
           },
           "imports": [
@@ -63,7 +63,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -72,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

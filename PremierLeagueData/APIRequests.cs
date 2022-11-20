@@ -48,7 +48,12 @@ namespace PremierLeagueData
             Console.WriteLine();
 
             //Console.WriteLine("Team \t \t | Points \t | MP \t | W \t | D \t | L");
-            var table = new ConsoleTable("Rank", "Team", "Points", "Form", "MP", "W", "D", "L", "GF", "GA", "GD");
+            var table = 
+                new ConsoleTable(new ConsoleTableOptions 
+                    { 
+                        Columns = new[] { "Rank", "Team", "Points", "Form", "MP", "W", "D", "L", "GF", "GA", "GD" }, 
+                        EnableCount = false
+                    });
 
             if (league_ == 4)
             {
@@ -132,7 +137,12 @@ namespace PremierLeagueData
             Console.WriteLine($"{league} {season} Gameweek {gameweek} Fixture Results");
             Console.WriteLine();
 
-            var table = new ConsoleTable("Home Team", "Score", "Away Team");
+            var table = 
+                new ConsoleTable(new ConsoleTableOptions 
+                    { 
+                        Columns = new[] { "Home Team", "Score", "Away Team" }, 
+                        EnableCount = false
+                    });
 
             for (int i = 0; i < 10; i++)
             {
@@ -150,8 +160,9 @@ namespace PremierLeagueData
             }
 
             table.Write();
-            Console.WriteLine();
             Console.WriteLine("N/A = Match Postponed");
+            Console.WriteLine();
+
             return response;
         }
 
@@ -190,8 +201,14 @@ namespace PremierLeagueData
             string season = (string)obj["parameters"]["season"];
             Console.WriteLine($"{league} {season} Top Scorers");
             Console.WriteLine();
+            
+            var table =
+                new ConsoleTable(new ConsoleTableOptions
+                {
+                    Columns = new[] { "Rank", "Player", "Goals", "Appearences", "Team", "Nationality" },
+                    EnableCount = false
+                });
 
-            var table = new ConsoleTable("Rank", "Player", "Goals", "Appearences", "Team", "Nationality");
             int rank = 0;
 
             for (int i = 0; i < 10; i++)
@@ -246,8 +263,14 @@ namespace PremierLeagueData
             string season = (string)obj["parameters"]["season"];
             Console.WriteLine($"{league} {season} Top Assistors");
             Console.WriteLine();
+            
+            var table =
+                new ConsoleTable(new ConsoleTableOptions
+                {
+                    Columns = new[] { "Rank", "Player", "Assists", "Appearences", "Team", "Nationality" },
+                    EnableCount = false
+                });
 
-            var table = new ConsoleTable("Rank", "Player", "Assists", "Appearences", "Team", "Nationality");
             int rank = 0;
 
             for (int i = 0; i < 10; i++)
