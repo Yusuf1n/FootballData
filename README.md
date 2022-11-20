@@ -14,6 +14,7 @@ The program is able to retrieve the following data from the top 5 football leagu
 - ConsoleTables - Formatting the data into tables
 - Newtonsoft - Serializing and deserializing the API request to JSON
 - RestSharp - Sending the REST API request and retreving the response
+- Spectre.Console - .NET library that makes it easier to create beautiful console applications.
 
 ![image](https://user-images.githubusercontent.com/71137409/157650044-a2cf540b-ca41-45dc-8931-0bc97159b096.png)
 
