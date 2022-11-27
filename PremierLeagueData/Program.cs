@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Spectre.Console;
+using System;
 using System.Threading.Tasks;
 
 namespace PremierLeagueData
@@ -8,10 +9,15 @@ namespace PremierLeagueData
         static async Task Main(string[] args)
         {
             bool exit = false;
+            
+            AnsiConsole.Write(
+                new FigletText("Football Data")
+                    .Centered()
+                    .Color(Color.Aqua));
 
             do
             {
-                Console.WriteLine("Football Data - Main Menu");
+                AnsiConsole.MarkupLine("[aqua slowblink]Main Menu[/]");
                 Console.WriteLine("1. League Standings");
                 Console.WriteLine("2. Fixture Results");
                 Console.WriteLine("3. Top Scorers");
