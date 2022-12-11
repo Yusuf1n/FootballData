@@ -17,32 +17,29 @@ namespace PremierLeagueData
 
             do
             {
-                AnsiConsole.MarkupLine("[aqua slowblink]Main Menu[/]");
-                Console.WriteLine("1. League Standings");
-                Console.WriteLine("2. Fixture Results");
-                Console.WriteLine("3. Top Scorers");
-                Console.WriteLine("4. Top Assistors");
-                Console.WriteLine("5. Exit");
-                Console.WriteLine();
-                Console.Write("Please enter your option between 1-5: ");
-                int option = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine();
+                var option = AnsiConsole.Prompt(
+                    new SelectionPrompt<string>()
+                        .Title("Main Menu")
+                        .AddChoices(new[] {
+                            "League Standings", "Fixture Results", "Top Scorers",
+                            "Top Assistors", "Exit",
+                        }));
 
                 switch (option)
                 {
-                    case 1:
+                    case "League Standings":
                         await ChooseLeague.LeagueforLeagueStandings();
                         break;
-                    case 2:
+                    case "Fixture Results":
                         await ChooseLeague.LeagueAndGWforFixtureResults();
                         break;
-                    case 3:
+                    case "Top Scorers":
                         await ChooseLeague.LeagueforTopScorers();
                         break;
-                    case 4:
+                    case "Top Assistors":
                         await ChooseLeague.LeagueforTopAssistors();
                         break;
-                    case 5:
+                    case "Exit":
                         exit = true;
                         break;
                 }
