@@ -23,19 +23,19 @@ namespace PremierLeagueData
             switch (option)
             {
                 case "Premier League":
-                    request.AddParameter("league", 39); // Premier League
+                    request.AddParameter("league", 39);
                     break;
                 case "La Liga":
-                    request.AddParameter("league", 140); // La Liga
+                    request.AddParameter("league", 140);
                     break;
                 case "Serie A":
-                    request.AddParameter("league", 135); // Serie A
+                    request.AddParameter("league", 135);
                     break;
                 case "Bundesliga":
-                    request.AddParameter("league", 78); // Bundesliga
+                    request.AddParameter("league", 78);
                     break;
                 case "Ligue 1":
-                    request.AddParameter("league", 61); // Ligue 1
+                    request.AddParameter("league", 61);
                     break;
             }
 
@@ -101,7 +101,7 @@ namespace PremierLeagueData
         }
 
 
-        public static async Task<RestResponse> FixtureResults(int league_, int gameweek)
+        public static async Task<RestResponse> FixtureResults(string option, int gameweek)
         {
             var client = new RestClient(Constants.baseURL);
 
@@ -110,21 +110,21 @@ namespace PremierLeagueData
                 .AddParameter("season", DateTime.Now.Year) // Current Season
                 .AddParameter("round", $"Regular Season - {gameweek}"); // GW 27
 
-            switch (league_)
+            switch (option)
             {
-                case 1:
+                case "Premier League":
                     request.AddParameter("league", 39); // Premier League
                     break;
-                case 2:
+                case "La Liga":
                     request.AddParameter("league", 140); // La Liga
                     break;
-                case 3:
+                case "Serie A":
                     request.AddParameter("league", 135); // Serie A
                     break;
-                case 4:
+                case "Bundesliga":
                     request.AddParameter("league", 78); // Bundesliga
                     break;
-                case 5:
+                case "Ligue 1":
                     request.AddParameter("league", 61); // Ligue 1
                     break;
             }
