@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yusuf.Naheem\\RiderProjects\\FootballData\\PremierLeagueData\\PremierLeagueData.csproj": {}
+    "C:\\Users\\Yusuf.Naheem\\OneDrive - Verco\\Documents\\Visual Studio 2022\\FootballData\\PremierLeagueData\\PremierLeagueData.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yusuf.Naheem\\RiderProjects\\FootballData\\PremierLeagueData\\PremierLeagueData.csproj": {
+    "C:\\Users\\Yusuf.Naheem\\OneDrive - Verco\\Documents\\Visual Studio 2022\\FootballData\\PremierLeagueData\\PremierLeagueData.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yusuf.Naheem\\RiderProjects\\FootballData\\PremierLeagueData\\PremierLeagueData.csproj",
+        "projectUniqueName": "C:\\Users\\Yusuf.Naheem\\OneDrive - Verco\\Documents\\Visual Studio 2022\\FootballData\\PremierLeagueData\\PremierLeagueData.csproj",
         "projectName": "assembly name PremierLeagueData",
-        "projectPath": "C:\\Users\\Yusuf.Naheem\\RiderProjects\\FootballData\\PremierLeagueData\\PremierLeagueData.csproj",
+        "projectPath": "C:\\Users\\Yusuf.Naheem\\OneDrive - Verco\\Documents\\Visual Studio 2022\\FootballData\\PremierLeagueData\\PremierLeagueData.csproj",
         "packagesPath": "C:\\Users\\Yusuf.Naheem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yusuf.Naheem\\RiderProjects\\FootballData\\PremierLeagueData\\obj\\",
+        "outputPath": "C:\\Users\\Yusuf.Naheem\\OneDrive - Verco\\Documents\\Visual Studio 2022\\FootballData\\PremierLeagueData\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Yusuf.Naheem\\AppData\\Roaming\\NuGet\\NuGet.Config",

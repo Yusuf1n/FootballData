@@ -48,12 +48,12 @@ namespace PremierLeagueData
             Console.WriteLine();
 
             //Console.WriteLine("Team \t \t | Points \t | MP \t | W \t | D \t | L");
-            var table = 
-                new ConsoleTable(new ConsoleTableOptions 
-                    { 
-                        Columns = new[] { "Rank", "Team", "Points", "Form", "MP", "W", "D", "L", "GF", "GA", "GD" }, 
-                        EnableCount = false
-                    });
+            var table =
+                new ConsoleTable(new ConsoleTableOptions
+                {
+                    Columns = new[] { "Rank", "Team", "Points", "Form", "MP", "W", "D", "L", "GF", "GA", "GD" },
+                    EnableCount = false
+                });
 
             if (option == "Bundesliga")
             {
@@ -137,26 +137,46 @@ namespace PremierLeagueData
             Console.WriteLine($"{league} {season} Gameweek {gameweek} Fixture Results");
             Console.WriteLine();
 
-            var table = 
-                new ConsoleTable(new ConsoleTableOptions 
-                    { 
-                        Columns = new[] { "Home Team", "Score", "Away Team" }, 
-                        EnableCount = false
-                    });
+            var table =
+                new ConsoleTable(new ConsoleTableOptions
+                {
+                    Columns = new[] { "Home Team", "Score", "Away Team" },
+                    EnableCount = false
+                });
 
-            for (int i = 0; i < 10; i++)
+            if (option == "Bundesliga")
             {
-                string homeTeam = (string)obj["response"][i]["teams"]["home"]["name"];
-                string awayTeam = (string)obj["response"][i]["teams"]["away"]["name"];
-                string homeGoals = (string)obj["response"][i]["goals"]["home"];
-                string awayGoals = (string)obj["response"][i]["goals"]["away"];
-                string score = $"{homeGoals} - {awayGoals}";
-                string status = (string)obj["response"][i]["fixture"]["status"]["long"];
-                if (status == "Not Started" || status == "Match Postponed")
-                    score = " N/A";
+                for (int i = 0; i < 9; i++)
+                {
+                    string homeTeam = (string)obj["response"][i]["teams"]["home"]["name"];
+                    string awayTeam = (string)obj["response"][i]["teams"]["away"]["name"];
+                    string homeGoals = (string)obj["response"][i]["goals"]["home"];
+                    string awayGoals = (string)obj["response"][i]["goals"]["away"];
+                    string score = $"{homeGoals} - {awayGoals}";
+                    string status = (string)obj["response"][i]["fixture"]["status"]["long"];
+                    if (status == "Not Started" || status == "Match Postponed")
+                        score = " N/A";
 
-                table.AddRow(homeTeam, score, awayTeam);
-                //Console.WriteLine(response.Content);
+                    table.AddRow(homeTeam, score, awayTeam);
+                    //Console.WriteLine(response.Content);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    string homeTeam = (string)obj["response"][i]["teams"]["home"]["name"];
+                    string awayTeam = (string)obj["response"][i]["teams"]["away"]["name"];
+                    string homeGoals = (string)obj["response"][i]["goals"]["home"];
+                    string awayGoals = (string)obj["response"][i]["goals"]["away"];
+                    string score = $"{homeGoals} - {awayGoals}";
+                    string status = (string)obj["response"][i]["fixture"]["status"]["long"];
+                    if (status == "Not Started" || status == "Match Postponed")
+                        score = " N/A";
+
+                    table.AddRow(homeTeam, score, awayTeam);
+                    //Console.WriteLine(response.Content);
+                }
             }
 
             table.Write();
@@ -201,7 +221,7 @@ namespace PremierLeagueData
             string season = (string)obj["parameters"]["season"];
             Console.WriteLine($"{league} {season} Top Scorers");
             Console.WriteLine();
-            
+
             var table =
                 new ConsoleTable(new ConsoleTableOptions
                 {
@@ -263,7 +283,7 @@ namespace PremierLeagueData
             string season = (string)obj["parameters"]["season"];
             Console.WriteLine($"{league} {season} Top Assistors");
             Console.WriteLine();
-            
+
             var table =
                 new ConsoleTable(new ConsoleTableOptions
                 {
