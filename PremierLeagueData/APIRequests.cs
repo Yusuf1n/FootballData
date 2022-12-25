@@ -134,6 +134,7 @@ namespace PremierLeagueData
 
             string league = (string)obj["response"][0]["league"]["name"];
             string season = (string)obj["response"][0]["league"]["season"];
+            int results = (int)obj["results"];
             Console.WriteLine($"{league} {season} Gameweek {gameweek} Fixture Results");
             Console.WriteLine();
 
@@ -144,39 +145,19 @@ namespace PremierLeagueData
                     EnableCount = false
                 });
 
-            if (option == "Bundesliga")
+            for (int i = 0; i < results; i++)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    string homeTeam = (string)obj["response"][i]["teams"]["home"]["name"];
-                    string awayTeam = (string)obj["response"][i]["teams"]["away"]["name"];
-                    string homeGoals = (string)obj["response"][i]["goals"]["home"];
-                    string awayGoals = (string)obj["response"][i]["goals"]["away"];
-                    string score = $"{homeGoals} - {awayGoals}";
-                    string status = (string)obj["response"][i]["fixture"]["status"]["long"];
-                    if (status == "Not Started" || status == "Match Postponed")
-                        score = " N/A";
+                string homeTeam = (string)obj["response"][i]["teams"]["home"]["name"];
+                string awayTeam = (string)obj["response"][i]["teams"]["away"]["name"];
+                string homeGoals = (string)obj["response"][i]["goals"]["home"];
+                string awayGoals = (string)obj["response"][i]["goals"]["away"];
+                string score = $"{homeGoals} - {awayGoals}";
+                string status = (string)obj["response"][i]["fixture"]["status"]["long"];
+                if (status == "Not Started" || status == "Match Postponed")
+                    score = " N/A";
 
-                    table.AddRow(homeTeam, score, awayTeam);
-                    //Console.WriteLine(response.Content);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    string homeTeam = (string)obj["response"][i]["teams"]["home"]["name"];
-                    string awayTeam = (string)obj["response"][i]["teams"]["away"]["name"];
-                    string homeGoals = (string)obj["response"][i]["goals"]["home"];
-                    string awayGoals = (string)obj["response"][i]["goals"]["away"];
-                    string score = $"{homeGoals} - {awayGoals}";
-                    string status = (string)obj["response"][i]["fixture"]["status"]["long"];
-                    if (status == "Not Started" || status == "Match Postponed")
-                        score = " N/A";
-
-                    table.AddRow(homeTeam, score, awayTeam);
-                    //Console.WriteLine(response.Content);
-                }
+                table.AddRow(homeTeam, score, awayTeam);
+                //Console.WriteLine(response.Content);
             }
 
             table.Write();
