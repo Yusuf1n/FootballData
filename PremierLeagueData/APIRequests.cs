@@ -18,7 +18,7 @@ namespace PremierLeagueData
 
             var request = new RestRequest("standings", Method.Get)
                 .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("season", DateTime.Now.Year); // Current Season
+                .AddParameter("season", DateTime.Now.Year -1); // Current Season | TODO: Make this paramter value dynamic
 
             switch (option)
             {
@@ -44,6 +44,7 @@ namespace PremierLeagueData
 
             string league = (string)obj["response"][0]["league"]["name"];
             string season = (string)obj["parameters"]["season"];
+            int results = (int)obj["response"][0]["league"]["standings"][0].Count();
             Console.WriteLine(league + " " + season);
             Console.WriteLine();
 
@@ -55,9 +56,7 @@ namespace PremierLeagueData
                     EnableCount = false
                 });
 
-            if (option == "Bundesliga")
-            {
-                for (int i = 0; i < 18; i++)
+                for (int i = 0; i < results; i++)
                 {
                     int rank = (int)obj["response"][0]["league"]["standings"][0][i]["rank"];
                     string team = (string)obj["response"][0]["league"]["standings"][0][i]["team"]["name"];
@@ -74,27 +73,6 @@ namespace PremierLeagueData
                     table.AddRow(rank, team, points, form, matchesPlayed, wins, drawn, lost, goalsFor, goalAgainst, goalDifference);
                     //Console.WriteLine(response.Content);
                 }
-            }
-            else
-            {
-                for (int i = 0; i < 20; i++)
-                {
-                    int rank = (int)obj["response"][0]["league"]["standings"][0][i]["rank"];
-                    string team = (string)obj["response"][0]["league"]["standings"][0][i]["team"]["name"];
-                    int points = (int)obj["response"][0]["league"]["standings"][0][i]["points"];
-                    string form = (string)obj["response"][0]["league"]["standings"][0][i]["form"];
-                    int matchesPlayed = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["played"];
-                    int wins = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["win"];
-                    int drawn = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["draw"];
-                    int lost = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["lose"];
-                    int goalsFor = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["goals"]["for"];
-                    int goalAgainst = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["goals"]["against"];
-                    int goalDifference = (int)obj["response"][0]["league"]["standings"][0][i]["goalsDiff"];
-                    //Console.WriteLine($"{team} \t \t | {points} \t | {mp} \t  | {wins} \t | {drawn} \t | {lost}");
-                    table.AddRow(rank, team, points, form, matchesPlayed, wins, drawn, lost, goalsFor, goalAgainst, goalDifference);
-                    //Console.WriteLine(response.Content);
-                }
-            }
 
             table.Write();
             return response;
@@ -107,7 +85,7 @@ namespace PremierLeagueData
 
             var request = new RestRequest("fixtures", Method.Get)
                 .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("season", DateTime.Now.Year) // Current Season
+                .AddParameter("season", DateTime.Now.Year -1) // Current Season | TODO: Make this paramter value dynamic
                 .AddParameter("round", $"Regular Season - {gameweek}"); // GW 27
 
             switch (option)
@@ -174,7 +152,7 @@ namespace PremierLeagueData
 
             var request = new RestRequest("players/topscorers", Method.Get)
                 .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("season", DateTime.Now.Year); // Current Season
+                .AddParameter("season", DateTime.Now.Year); // Current Season | TODO: Make this paramter value dynamic
 
             switch (league_)
             {
@@ -236,7 +214,7 @@ namespace PremierLeagueData
 
             var request = new RestRequest("players/topassists", Method.Get)
                 .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("season", DateTime.Now.Year); // Current Season
+                .AddParameter("season", DateTime.Now.Year); // Current Season | TODO: Make this paramter value dynamic
 
             switch (league_)
             {
