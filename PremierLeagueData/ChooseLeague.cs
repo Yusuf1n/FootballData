@@ -147,17 +147,39 @@ namespace PremierLeagueData
 
         public static async Task LeagueforTopScorers()
         {
-            Console.WriteLine("Which Leagues Top Scorers would you like to see?");
-            Console.WriteLine("1. Premier League (England)");
-            Console.WriteLine("2. La Liga (Spain)");
-            Console.WriteLine("3. Serie A (Italy)");
-            Console.WriteLine("4. Bundesliga (Germany)");
-            Console.WriteLine("5. Ligue 1 (France)");
-            Console.WriteLine();
-            Console.Write("Please enter 1-5: ");
-            int league_ = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine();
-            await APIRequests.TopScorers(league_);
+            //do
+            //{
+                var option = AnsiConsole.Prompt(
+                    new SelectionPrompt<string>()
+                        .Title("Which Leagues Top Scorers would you like to see?")
+                        .AddChoices(new[] {
+                            "1. Premier League (England)", "2. La Liga (Spain)", "3. Serie A (Italy)",
+                            "4. Bundesliga (Germany)", "5. Ligue 1 (France)", "Exit",
+                        }));
+
+                switch (option)
+                {
+                    case "1. Premier League (England)":
+                        await APIRequests.TopScorers(39);
+                        break;
+                    case "2. La Liga (Spain)":
+                        await APIRequests.TopScorers(140);
+                        break;
+                    case "3. Serie A (Italy)":
+                        await APIRequests.TopScorers(135);
+                        break;
+                    case "4. Bundesliga (Germany)":
+                        await APIRequests.TopScorers(78);
+                        break;
+                    case "5. Ligue 1 (France)":
+                        await APIRequests.TopScorers(61);
+                        break;
+                    case "Exit":
+                        exit = true;
+                        break;
+                }
+            //}
+            //while (!exit);
         }
 
         public static async Task LeagueforTopAssistors()

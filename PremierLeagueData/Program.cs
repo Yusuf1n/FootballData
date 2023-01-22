@@ -31,7 +31,15 @@ namespace PremierLeagueData
                         await ChooseLeague.LeagueforLeagueStandings();
                         break;
                     case "Fixture Results":
-                        await ChooseLeague.LeagueAndGWforFixtureResults();
+                        try
+                        {
+                            await ChooseLeague.LeagueAndGWforFixtureResults();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                            //throw;
+                        }
                         break;
                     case "Top Scorers":
                         await ChooseLeague.LeagueforTopScorers();
