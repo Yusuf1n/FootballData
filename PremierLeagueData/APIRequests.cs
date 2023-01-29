@@ -214,23 +214,23 @@ namespace PremierLeagueData
 
             var request = new RestRequest("players/topassists", Method.Get)
                 .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("season", DateTime.Now.Year); // Current Season | TODO: Make this parameter value dynamic
+                .AddParameter("season", DateTime.Now.Year -1); // Current Season | TODO: Make this parameter value dynamic
 
             switch (league_)
             {
-                case 1:
+                case 39:
                     request.AddParameter("league", 39); // Premier League
                     break;
-                case 2:
+                case 140:
                     request.AddParameter("league", 140); // La Liga
                     break;
-                case 3:
+                case 135:
                     request.AddParameter("league", 135); // Serie A
                     break;
-                case 4:
+                case 78:
                     request.AddParameter("league", 78); // Bundesliga
                     break;
-                case 5:
+                case 61:
                     request.AddParameter("league", 61); // Ligue 1
                     break;
             }
