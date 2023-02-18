@@ -12,13 +12,13 @@ namespace PremierLeagueData
 {
     internal class APIRequests
     {
-        public static async Task<RestResponse> LeagueStandings(string option)
+        public static async Task<RestResponse> LeagueStandings(string option, int seasonYear)
         {
             var client = new RestClient(Constants.baseURL);
 
             var request = new RestRequest("standings", Method.Get)
                 .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("season", DateTime.Now.Year -1); // Current Season | TODO: Make this parameter value dynamic
+                .AddParameter("season", seasonYear); // Current Season | TODO: Make this parameter value dynamic
 
             switch (option)
             {

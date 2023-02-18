@@ -23,26 +23,31 @@ namespace PremierLeagueData
                             "Bundesliga (Germany)", "Ligue 1 (France)", "Exit",
                         }));
 
+                var seasonYear = AnsiConsole.Prompt(
+                    new TextPrompt<int>
+                        ("Which season would you like to see standings for? \nEnter the year for when the season started. [grey]e.g. 2022 for the 22/23 season[/]")
+                        .PromptStyle("green"));
+
                 switch (option)
                 {
                     case "Premier League (England)":
-                        await APIRequests.LeagueStandings("Premier League");
+                        await APIRequests.LeagueStandings("Premier League", seasonYear);
                         break;
                     
                     case "La Liga (Spain)":
-                        await APIRequests.LeagueStandings("La Liga");
+                        await APIRequests.LeagueStandings("La Liga", seasonYear);
                         break;
                     
                     case "Serie A (Italy)":
-                        await APIRequests.LeagueStandings("Serie A");
+                        await APIRequests.LeagueStandings("Serie A", seasonYear);
                         break;
                     
                     case "Bundesliga (Germany)":
-                        await APIRequests.LeagueStandings("Bundesliga");
+                        await APIRequests.LeagueStandings("Bundesliga", seasonYear);
                         break;
                     
                     case "Ligue 1 (France)":
-                        await APIRequests.LeagueStandings("Ligue 1");
+                        await APIRequests.LeagueStandings("Ligue 1", seasonYear);
                         break;
                     
                     case "Exit":
