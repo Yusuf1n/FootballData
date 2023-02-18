@@ -18,7 +18,7 @@ namespace PremierLeagueData
 
             var request = new RestRequest("standings", Method.Get)
                 .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("season", seasonYear); // Current Season | TODO: Make this parameter value dynamic
+                .AddParameter("season", seasonYear);
 
             switch (option)
             {
@@ -45,8 +45,8 @@ namespace PremierLeagueData
             string league = (string)obj["response"][0]["league"]["name"];
             string season = (string)obj["parameters"]["season"];
             int results = (int)obj["response"][0]["league"]["standings"][0].Count();
-            Console.WriteLine(league + " " + season);
-            Console.WriteLine();
+            int season2 = Int32.Parse(season) % 100;
+            Console.WriteLine($"\n{league} {season2}/{season2 + 1} standings\n");
 
             //Console.WriteLine("Team \t \t | Points \t | MP \t | W \t | D \t | L");
             var table =
