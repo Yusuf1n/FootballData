@@ -28,7 +28,7 @@ namespace PremierLeagueData
                 switch (option)
                 {
                     case "League Standings":
-                        await ChooseLeague.LeagueforLeagueStandings();
+                        await ChooseLeague.PromptForLeagueStandings();
                         break;
                     case "Fixture Results":
                         try

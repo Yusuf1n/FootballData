@@ -10,8 +10,9 @@ namespace PremierLeagueData
     public class ChooseLeague
     {
         static bool exit = false;
+        static int seasonYear;
 
-        public static async Task LeagueforLeagueStandings()
+        public static async Task PromptForLeagueStandings()
         {
             do
             {
@@ -23,10 +24,13 @@ namespace PremierLeagueData
                             "Bundesliga (Germany)", "Ligue 1 (France)", "Exit",
                         }));
 
-                var seasonYear = AnsiConsole.Prompt(
-                    new TextPrompt<int>
-                        ("Which season would you like to see standings for? \nEnter the year for when the season started. [grey]e.g. 2022 for the 22/23 season[/]")
-                        .PromptStyle("green"));
+                if (option != "Exit")
+                {
+                    seasonYear = AnsiConsole.Prompt(
+                        new TextPrompt<int>
+                                ("Which season would you like to see standings for? \nEnter the year for when the season started. [grey]e.g. 2022 for the 22/23 season[/]")
+                            .PromptStyle("green"));
+                }
 
                 switch (option)
                 {
