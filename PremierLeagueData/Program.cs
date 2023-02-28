@@ -33,7 +33,7 @@ namespace PremierLeagueData
                     case "Fixture Results":
                         try
                         {
-                            await ChooseLeague.LeagueAndGWforFixtureResults();
+                            await ChooseLeague.PromptForFixtureResults();
                         }
                         catch (Exception ex)
                         {

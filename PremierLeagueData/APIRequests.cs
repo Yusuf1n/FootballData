@@ -79,14 +79,14 @@ namespace PremierLeagueData
         }
 
 
-        public static async Task<RestResponse> FixtureResults(string option, int gameweek)
+        public static async Task<RestResponse> FixtureResults(string option, int seasonYear, int gameweek)
         {
             var client = new RestClient(Constants.baseURL);
 
             var request = new RestRequest("fixtures", Method.Get)
                 .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("season", DateTime.Now.Year -1) // Current Season | TODO: Make this parameter value dynamic
-                .AddParameter("round", $"Regular Season - {gameweek}"); // GW 27
+                .AddParameter("season", seasonYear)
+                .AddParameter("round", $"Regular Season - {gameweek}");
 
             switch (option)
             {
@@ -113,8 +113,8 @@ namespace PremierLeagueData
             string league = (string)obj["response"][0]["league"]["name"];
             string season = (string)obj["response"][0]["league"]["season"];
             int results = (int)obj["results"];
-            Console.WriteLine($"{league} {season} Gameweek {gameweek} Fixture Results");
-            Console.WriteLine();
+            int season2 = Int32.Parse(season) % 100;
+            Console.WriteLine($"\n{league} {season2}/{season2 + 1} - Gameweek {gameweek} Fixture Results\n");
 
             var table =
                 new ConsoleTable(new ConsoleTableOptions

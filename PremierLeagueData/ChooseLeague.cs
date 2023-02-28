@@ -74,9 +74,9 @@ namespace PremierLeagueData
             //await APIRequests.LeagueStandings(league_);
         }
 
-        public static async Task LeagueAndGWforFixtureResults()
+        public static async Task PromptForFixtureResults()
         {
-            int gameweek;
+            int gameweek = 0;
             
             do
             {
@@ -88,46 +88,41 @@ namespace PremierLeagueData
                             "Bundesliga (Germany)", "Ligue 1 (France)", "Exit",
                         }));
 
+                if (option != "Exit")
+                {
+                    seasonYear = AnsiConsole.Prompt(
+                        new TextPrompt<int>
+                                ("Which season would you like to see fixture results for? \nEnter the year for when the season started. [grey]e.g. 2022 for the 22/23 season[/]")
+                            .PromptStyle("green"));
+                    
+                    Console.WriteLine();
+
+                    gameweek = AnsiConsole.Prompt(
+                        new TextPrompt<int>
+                                ("Which Gameweeks Fixture Results would you like to see? \nGameweek: ")
+                            .PromptStyle("blue"));
+                }
+
                 switch (option)
                 {
                     case "Premier League (England)":
-                        Console.WriteLine("Which Gameweeks Fixture Results would you like to see?");
-                        Console.Write("Gameweek: ");
-                        gameweek = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine();
-                        await APIRequests.FixtureResults("Premier League", gameweek);
+                        await APIRequests.FixtureResults("Premier League", seasonYear, gameweek);
                         break;
                     
                     case "La Liga (Spain)":
-                        Console.WriteLine("Which Gameweeks Fixture Results would you like to see?");
-                        Console.Write("Gameweek: ");
-                        gameweek = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine();
-                        await APIRequests.FixtureResults("La Liga", gameweek);
+                        await APIRequests.FixtureResults("La Liga", seasonYear, gameweek);
                         break;
                     
                     case "Serie A (Italy)":
-                        Console.WriteLine("Which Gameweeks Fixture Results would you like to see?");
-                        Console.Write("Gameweek: ");
-                        gameweek = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine();
-                        await APIRequests.FixtureResults("Serie A", gameweek);
+                        await APIRequests.FixtureResults("Serie A", seasonYear, gameweek);
                         break;
 
                     case "Bundesliga (Germany)":
-                        Console.WriteLine("Which Gameweeks Fixture Results would you like to see?");
-                        Console.Write("Gameweek: ");
-                        gameweek = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine();
-                        await APIRequests.FixtureResults("Bundesliga", gameweek);
+                        await APIRequests.FixtureResults("Bundesliga", seasonYear, gameweek);
                         break;
                     
                     case "Ligue 1 (France)":
-                        Console.WriteLine("Which Gameweeks Fixture Results would you like to see?");
-                        Console.Write("Gameweek: ");
-                        gameweek = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine();
-                        await APIRequests.FixtureResults("Ligue 1", gameweek);
+                        await APIRequests.FixtureResults("Ligue 1", seasonYear, gameweek);
                         break;
                     
                     case "Exit":
