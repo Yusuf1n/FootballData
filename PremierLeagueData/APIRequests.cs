@@ -146,13 +146,13 @@ namespace PremierLeagueData
         }
 
 
-        public static async Task<RestResponse> TopScorers(int league_)
+        public static async Task<RestResponse> TopScorers(int league_, int seasonYear)
         {
             var client = new RestClient(Constants.baseURL);
 
             var request = new RestRequest("players/topscorers", Method.Get)
                 .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("season", DateTime.Now.Year -1); // Current Season | TODO: Make this parameter value dynamic
+                .AddParameter("season", seasonYear);
 
             switch (league_)
             {
@@ -178,8 +178,8 @@ namespace PremierLeagueData
 
             string league = (string)obj["response"][0]["statistics"][0]["league"]["name"];
             string season = (string)obj["parameters"]["season"];
-            Console.WriteLine($"{league} {season} Top Scorers");
-            Console.WriteLine();
+            int season2 = Int32.Parse(season) % 100;
+            Console.WriteLine($"\n{league} {season2}/{season2 + 1} Top Scorers\n");
 
             var table =
                 new ConsoleTable(new ConsoleTableOptions

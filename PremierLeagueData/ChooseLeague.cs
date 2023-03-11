@@ -150,10 +150,10 @@ namespace PremierLeagueData
             // await APIRequests.FixtureResults(league_, gameweek);
         }
 
-        public static async Task LeagueforTopScorers()
+        public static async Task PromptForLeagueforTopScorers()
         {
-            //do
-            //{
+            do
+            {
                 var option = AnsiConsole.Prompt(
                     new SelectionPrompt<string>()
                         .Title("Which Leagues Top Scorers would you like to see?")
@@ -162,29 +162,37 @@ namespace PremierLeagueData
                             "4. Bundesliga (Germany)", "5. Ligue 1 (France)", "Exit",
                         }));
 
+                if (option != "Exit")
+                {
+                    seasonYear = AnsiConsole.Prompt(
+                        new TextPrompt<int>
+                                ("Which season would you like to see top scorers for? \nEnter the year for when the season started. [grey]e.g. 2022 for the 22/23 season[/]")
+                            .PromptStyle("green"));
+                }
+
                 switch (option)
                 {
                     case "1. Premier League (England)":
-                        await APIRequests.TopScorers(39);
+                        await APIRequests.TopScorers(39, seasonYear);
                         break;
                     case "2. La Liga (Spain)":
-                        await APIRequests.TopScorers(140);
+                        await APIRequests.TopScorers(140, seasonYear);
                         break;
                     case "3. Serie A (Italy)":
-                        await APIRequests.TopScorers(135);
+                        await APIRequests.TopScorers(135, seasonYear);
                         break;
                     case "4. Bundesliga (Germany)":
-                        await APIRequests.TopScorers(78);
+                        await APIRequests.TopScorers(78, seasonYear);
                         break;
                     case "5. Ligue 1 (France)":
-                        await APIRequests.TopScorers(61);
+                        await APIRequests.TopScorers(61, seasonYear);
                         break;
                     case "Exit":
                         exit = true;
                         break;
                 }
-            //}
-            //while (!exit);
+            }
+            while (!exit);
         }
 
         public static async Task LeagueforTopAssistors()

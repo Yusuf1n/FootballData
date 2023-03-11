@@ -42,7 +42,7 @@ namespace PremierLeagueData
                         }
                         break;
                     case "Top Scorers":
-                        await ChooseLeague.LeagueforTopScorers();
+                        await ChooseLeague.PromptForLeagueforTopScorers();
                         break;
                     case "Top Assistors":
                         await ChooseLeague.LeagueforTopAssistors();
