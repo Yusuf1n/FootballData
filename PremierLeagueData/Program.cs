@@ -9,7 +9,7 @@ namespace PremierLeagueData
         static async Task Main(string[] args)
         {
             bool exit = false;
-            
+
             AnsiConsole.Write(
                 new FigletText("Football Data")
                     .Centered()
@@ -42,10 +42,10 @@ namespace PremierLeagueData
                         }
                         break;
                     case "Top Scorers":
-                        await ChooseLeague.PromptForLeagueforTopScorers();
+                        await ChooseLeague.PromptForLeagueTopScorers();
                         break;
                     case "Top Assistors":
-                        await ChooseLeague.LeagueforTopAssistors();
+                        await ChooseLeague.PromptForLeagueTopAssistors();
                         break;
                     case "Exit":
                         exit = true;

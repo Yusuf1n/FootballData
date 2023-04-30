@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using ConsoleTables;
+﻿using ConsoleTables;
 using Newtonsoft.Json.Linq;
 using RestSharp;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PremierLeagueData
 {
@@ -56,23 +53,23 @@ namespace PremierLeagueData
                     EnableCount = false
                 });
 
-                for (int i = 0; i < results; i++)
-                {
-                    int rank = (int)obj["response"][0]["league"]["standings"][0][i]["rank"];
-                    string team = (string)obj["response"][0]["league"]["standings"][0][i]["team"]["name"];
-                    int points = (int)obj["response"][0]["league"]["standings"][0][i]["points"];
-                    string form = (string)obj["response"][0]["league"]["standings"][0][i]["form"];
-                    int matchesPlayed = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["played"];
-                    int wins = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["win"];
-                    int drawn = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["draw"];
-                    int lost = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["lose"];
-                    int goalsFor = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["goals"]["for"];
-                    int goalAgainst = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["goals"]["against"];
-                    int goalDifference = (int)obj["response"][0]["league"]["standings"][0][i]["goalsDiff"];
-                    //Console.WriteLine($"{team} \t \t | {points} \t | {mp} \t  | {wins} \t | {drawn} \t | {lost}");
-                    table.AddRow(rank, team, points, form, matchesPlayed, wins, drawn, lost, goalsFor, goalAgainst, goalDifference);
-                    //Console.WriteLine(response.Content);
-                }
+            for (int i = 0; i < results; i++)
+            {
+                int rank = (int)obj["response"][0]["league"]["standings"][0][i]["rank"];
+                string team = (string)obj["response"][0]["league"]["standings"][0][i]["team"]["name"];
+                int points = (int)obj["response"][0]["league"]["standings"][0][i]["points"];
+                string form = (string)obj["response"][0]["league"]["standings"][0][i]["form"];
+                int matchesPlayed = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["played"];
+                int wins = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["win"];
+                int drawn = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["draw"];
+                int lost = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["lose"];
+                int goalsFor = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["goals"]["for"];
+                int goalAgainst = (int)obj["response"][0]["league"]["standings"][0][i]["all"]["goals"]["against"];
+                int goalDifference = (int)obj["response"][0]["league"]["standings"][0][i]["goalsDiff"];
+                //Console.WriteLine($"{team} \t \t | {points} \t | {mp} \t  | {wins} \t | {drawn} \t | {lost}");
+                table.AddRow(rank, team, points, form, matchesPlayed, wins, drawn, lost, goalsFor, goalAgainst, goalDifference);
+                //Console.WriteLine(response.Content);
+            }
 
             table.Write();
             return response;
@@ -176,6 +173,7 @@ namespace PremierLeagueData
             RestResponse response = await client.GetAsync(request);
             JObject obj = JObject.Parse(response.Content);
 
+
             string league = (string)obj["response"][0]["statistics"][0]["league"]["name"];
             string season = (string)obj["parameters"]["season"];
             int season2 = Int32.Parse(season) % 100;
@@ -208,13 +206,13 @@ namespace PremierLeagueData
         }
 
 
-        public static async Task<RestResponse> TopAssistors(int league_)
+        public static async Task<RestResponse> TopAssistors(int league_, int seasonYear)
         {
             var client = new RestClient(Constants.baseURL);
 
             var request = new RestRequest("players/topassists", Method.Get)
                 .AddHeader(Constants.apiKey, Constants.apiValue)
-                .AddParameter("season", DateTime.Now.Year -1); // Current Season | TODO: Make this parameter value dynamic
+                .AddParameter("season", seasonYear);
 
             switch (league_)
             {
@@ -240,8 +238,8 @@ namespace PremierLeagueData
 
             string league = (string)obj["response"][0]["statistics"][0]["league"]["name"];
             string season = (string)obj["parameters"]["season"];
-            Console.WriteLine($"{league} {season} Top Assistors");
-            Console.WriteLine();
+            int season2 = Int32.Parse(season) % 100;
+            Console.WriteLine($"\n{league} {season}/{season2 + 1} Top Assistors\n");
 
             var table =
                 new ConsoleTable(new ConsoleTableOptions

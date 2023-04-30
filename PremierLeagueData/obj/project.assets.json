@@ -849,6 +849,7 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.telerik.com/v3/index.json": {},
         "https://pkgs.dev.azure.com/vercodev/_packaging/Venso/nuget/v3/index.json": {}
       },
       "frameworks": {
